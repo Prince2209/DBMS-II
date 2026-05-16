@@ -1,0 +1,194 @@
+Lab-12 regex method
+Mongo
+DB
+Perform the following queries using Regex:
+Part – A Create collection named “Employee” and insert following 10 documents into it.
+
+
+1. Find employees whose name start with E.
+
+	db.employee.find({ENAME:/^E/})
+
+2. Find employees whose name ends with n.
+	
+	db.employee.find({ENAME:/n$/})
+
+3. Find employees whose name starts with S or M in your collection.
+
+	db.employee.find({ENAME:/^[SM]/})
+
+4. Find employees where city starts with A to M in your collection.
+
+	db.employee.find({CITY:/^[A-M]/})
+
+5. Find employees where city name ends in ‘ney’.
+
+	db.employee.find({CITY:/ney$/})
+
+6. Display employee info whose name contains n. (Both uppercase(N) and lowercase(n))
+
+	db.employee.find({ENAME:/[Nn]/})
+				or
+	db.employee.find({ENAME:/[n]/i})
+
+7. Display employee info whose name starts with E and having 5 characters.
+
+	db.employee.find({ENAME:/^E.{4}$/})
+				or
+	db.employee.find({ENAME:/^E.{4}/})
+
+8. Display employee whose name start with S and ends in a.
+
+	db.employee.find({ENAME:/^S.*a$/})
+
+9. Display EID, ENAME, CITY and SALARY whose name starts with ‘Phi’.
+
+	db.employee.find({ENAME:/^Phi/},{EID:1,ENAME:1,CITY:1,SALARY:1,_id:0})
+
+10. Display ENAME, JOININGDATE and CITY whose city contains ‘dne’ as three letters in city name.
+
+	db.employee.find({CITY:/dne/},{ENAME:1,JOININGDATE:1,CITY:1,_id:0})
+
+11. Display ENAME, JOININGDATE and CITY who does not belongs to city London or Sydney.
+
+	db.employee.find({CITY:/[^London|Sydney]/},{ENAME:1,JOININGDATE:1,CITY:1,_id:0})
+				or
+	db.employee.find({CITY:/[^(London)|(Sydney)]/},{ENAME:1,JOININGDATE:1,CITY:1,_id:0})
+				or
+	db.employee.find({CITY:/[^(London|Sydney)]/},{ENAME:1,JOININGDATE:1,CITY:1,_id:0})
+				or
+	db.employee.find({CITY:{$not:/^(London|Sydney)$/}},{ENAME:1,JOININGDATE:1,CITY:1,_id:0})
+				or
+	db.Employee.find({CITY:{$nin:["London","Sydney"]}},{ENAME:1,JOININGDATE:1,CITY:1,_id:0})
+
+12. Find employees whose names start with 'J'.
+
+	db.employee.find({ENAME:/^J/})
+
+13. Find employees whose names end with 'y'.
+
+	db.employee.find({ENAME:/y$/})
+
+14. Find employees whose names contain the letter 'a'.
+
+	db.employee.find({ENAME:/a/})
+
+15. Find employees whose names contain either 'a' or 'e'.
+
+	db.employee.find({ENAME:/[ae]/})
+
+16. Find employees whose names start with 'J' and end with 'n'.
+
+	db.employee.find({ENAME:/^J.*n$/})
+
+17. Find employees whose CITY starts with 'New'.
+
+	db.employee.find({CITY:/^New/})
+
+18. Find employees whose CITY does not start with 'L'
+
+	db.employee.find({CITY:/^[^L]/})
+
+19. Find employees whose CITY contains the word 'York'.
+
+	db.employee.find({CITY:/York/})
+
+20. Find employees whose names have two consecutive vowels (a, e, i, o, u).
+
+	db.employee.find({ENAME:/[aeiou]{2}/})
+
+21. Find employees whose names have three or more letters.
+
+	db.employee.find({ENAME:/.{3,}/})
+			or
+	db.employee.find({ENAME:/.../})
+
+22. Find employees whose names have exactly 4 letters.
+
+	db.employee.find({ENAME:/^....$/})
+
+23. Find employees whose names start with either 'S' or 'M'.
+
+	db.employee.find({ENAME:/^[SM]/})
+
+24. Find employees whose names contain 'il' anywhere.
+
+	db.employee.find({ENAME:/il/})
+
+25. Find employees whose names do not contain 'a'.
+
+	db.employee.find({ENAME:{$not:/a/}})
+
+26. Find employees whose names contain any digit.
+
+	db.employee.find({ENAME:/\d/})
+
+27. Find employees whose names contain exactly one vowel.
+
+	db.employee.find({ENAME:/^[^aeiou]*[aeiou][^aeiou]*$/i})
+
+28. Find employees whose names start with any uppercase letter followed by any lowercase letter.
+
+	db.employee.find({ENAME:/^[A-Z][a-z]*/})
+
+
+
+
+
+
+Part – B Create collection named “Student” and insert following 10 documents into it.
+
+
+1. Display documents where sname start with K.
+2. Display documents where sname starts with Z or D.
+3. Display documents where city starts with A to R.
+4. Display students’ info whose name start with P and ends with i.
+5. Display students’ info whose department name starts with ‘C’.
+6. Display name, sem, fees, and department whose city contains ‘med’ as three letters somewhere in city
+name.
+7. Display name, sem, fees, and department who does not belongs to city Rajkot or Baroda.
+8. Find students whose names start with 'K' and are followed by any character.
+9. Find students whose names end with 'a'.
+10. Find students whose names contain 'ri'. (case-insensitive)
+11. Find students whose names start with a vowel (A, E, I, O, U).
+12. Find students whose CITY ends with 'pur' or 'bad'.
+13. Find students whose FEES starts with '1'.
+14. Find students whose SNAME starts with 'K' or 'V'.
+15. Find students whose CITY contains exactly five characters
+16. Find students whose names do not contain the letter 'e'.
+17. Find students whose CITY starts with 'Ra' and ends with 'ot'.
+18. Find students whose names contain exactly one vowel.
+19. Find students whose names start and end with the same letter.
+20. Find students whose DEPARTMENT starts with either 'C' or 'E'.
+21. Find students whose SNAME has exactly 5 characters.
+22. Find students whose GENDER is Female and CITY starts with 'A'.
+
+
+
+
+
+Part – C Create collection named “Company” and insert following 10 documents into it.
+
+
+1. Find companies whose name starts with 'B' or 'F'
+2. Find companies located in cities ending with 'pur'
+3. Find companies whose name contains the word "Core" Find companies with email addresses starting
+with "info"
+4. Find companies whose INDUSTRY starts with a capital letter followed by 4 lowercase letters
+5. Find companies whose CNAME ends with a capital letter
+6. Find companies whose CITY starts with any letter from A to K
+7. Find companies whose INDUSTRY name has more than 8 letters
+8. Find companies whose EMAIL has a number in it
+9. Find companies whose name starts and ends with vowels
+10. Find companies with CITY names that contain the same letter twice in a row
+11. Find companies whose email starts with any two letters followed by digits
+12. Find companies whose EMAIL includes an underscore _
+13. Find companies whose EMAIL domain (after @) starts with 'g' or 'h'
+14. Find companies whose CNAME contains a repeating pattern like "ana", "ele", etc.
+15. Find companies whose CNAME contains at least 3 vowels
+16. Find companies whose EMAIL domain ends with '.com' and starts with 'out'
+17. Find companies whose INDUSTRY does not contain any vowels
+18. Find companies whose CNAME contains two or more consecutive consonants
+19. Find companies whose CNAME has alternating vowels and consonants (at least 4 characters)
+23. Find companies where CITY starts with two same letters (e.g., "Mehsana" doesn't match, but
+"AAhmedabad" would)	

@@ -1,0 +1,47 @@
+Create and select database “BANK_INFO”.
+use BANK_INFO
+
+1. Retrieve all documents of Deposit collection.
+db.Deposit.find()
+
+2. Display only one document from Deposit collection.
+db.Deposit.findOne()
+
+3. Insert one document into Deposit collection.
+db.Deposit.insertOne({ACTNO:109,CNAME:"KIRTI",BNAME:"VIRAR",AMOUNT:3000,ADATE:"3-5-97"})
+
+4. Insert multiple documents into Deposit collection.
+db.Deposit.insertMany([ {ACTNO:110,CNAME:"MITALI",BNAME:"ANDHERI",AMOUNT:4500,ADATE:"4-9-95"}, {ACTNO:111,CNAME:"RAJIV",BNAME:"NEHRU PLACE",AMOUNT:7000,ADATE:"2-10-98"} ])
+
+5. Display all documents of VIRAR branch.
+db.Deposit.find({BNAME:"VIRAR"})
+
+6. Display documents whose amount is between 3000 and 5000.
+db.Deposit.find({AMOUNT:{$gte:3000,$lte:5000}})
+
+7. Display documents whose amount > 2000 and branch is VIRAR.
+db.Deposit.find({AMOUNT:{$gt:2000},BNAME:"VIRAR"})
+
+8. Display CNAME, BNAME and AMOUNT only.
+db.Deposit.find({},{CNAME:1,BNAME:1,AMOUNT:1,_id:0})
+
+9. Sort documents by CNAME in ascending order.
+db.Deposit.find().sort({CNAME:1})
+
+10. Sort documents by BNAME in descending order.
+db.Deposit.find().sort({BNAME:-1})
+
+11. Sort by ACTNO ascending and AMOUNT descending.
+db.Deposit.find().sort({ACTNO:1,AMOUNT:-1})
+
+12. Display only two documents.
+db.Deposit.find().limit(2)
+
+13. Display third document.
+db.Deposit.find().skip(2).limit(1)
+
+14. Display sixth and seventh documents.
+db.Deposit.find().skip(5).limit(2)
+
+15. Count total documents in Deposit collection.
+db.Deposit.countDocuments()

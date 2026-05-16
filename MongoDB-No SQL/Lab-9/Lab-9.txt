@@ -1,0 +1,61 @@
+1. Create a new database named “Darshan”.
+use Darshan
+
+2. Create another new database named “DIET”.
+use DIET
+
+3. List all databases.
+show dbs
+
+4. Check the current database.
+db
+
+5. Drop “DIET” database.
+use DIET
+db.dropDatabase()
+
+6. Create a collection named “Student” in “Darshan” database.
+use Darshan
+db.createCollection("Student")
+
+7. Create a collection named “Department” in “Darshan” database.
+db.createCollection("Department")
+
+8. List all collections in “Darshan” database.
+show collections
+
+9. Insert a single document into “Department” collection.
+db.Department.insertOne({ Dname:"CE", HOD:"Patel" })
+
+10. Insert two documents into “Department” collection.
+db.Department.insertMany([{Dname:"IT"},{Dname:"ICT"}])
+
+11. Drop “Department” collection.
+db.Department.drop()
+
+12. Insert a single document into “Student” collection.
+db.Student.insertOne({Name:"Prince", City:"Rajkot", Branch:"CE", Semester:4, Age:20})
+
+13. Insert three documents into “Student” collection.
+db.Student.insertMany([ {Name:"Amit", City:"Surat", Branch:"IT", Semester:4, Age:21}, {Name:"Rahul", City:"Ahmedabad", Branch:"CE", Semester:3, Age:20}, {Name:"Neha", City:"Baroda", Branch:"ICT", Semester:5, Age:22} ])
+
+14. Check whether “Student” collection exists or not.
+show collections
+
+15. Check the stats of “Student” collection.
+db.Student.stats()
+
+16. Drop the “Student” collection.
+db.Student.drop()
+
+17. Create a collection named “Deposit”.
+db.createCollection("Deposit")
+
+18. Insert data into “Deposit” collection.
+db.Deposit.insertMany([ {ACTNO:101,CNAME:"ANIL",BNAME:"VRCE",AMOUNT:1000,CITY:"RAJKOT"}, {ACTNO:102,CNAME:"SUNIL",BNAME:"AJNI",AMOUNT:5000,CITY:"SURAT"}, {ACTNO:103,CNAME:"MEHUL",BNAME:"KAROLBAGH",AMOUNT:3500,CITY:"BARODA"}, {ACTNO:104,CNAME:"MADHURI",BNAME:"CHANDI",AMOUNT:1200,CITY:"AHMEDABAD"}, {ACTNO:105,CNAME:"PRMOD",BNAME:"M.G. ROAD",AMOUNT:3000,CITY:"SURAT"}, {ACTNO:106,CNAME:"SANDIP",BNAME:"ANDHERI",AMOUNT:2000,CITY:"RAJKOT"}, {ACTNO:107,CNAME:"SHIVANI",BNAME:"VIRAR",AMOUNT:1000,CITY:"SURAT"}, {ACTNO:108,CNAME:"KRANTI",BNAME:"NEHRU PLACE",AMOUNT:5000,CITY:"RAJKOT"} ])
+
+19. Display all documents of “Deposit” collection.
+db.Deposit.find()
+
+20. Drop the “Deposit” collection.
+db.Deposit.drop()
